@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Cadastro</title>
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="{% url 'index' %}">Início</a></li>
+    
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'gerenciar' %}">Gerenciar</a></li>
+                <li><span class="spanSide" onclick="openNav()">Ações</span></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Logar</a></li>
+                <li><a href="{% url 'cadastro' %}">Cadastrar</a></li>
+            {% endif %}
+    
+            <li style="float:right"><a class="active" href="#about">Login e Senha</a></li>
+        </ul>
+    </nav>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'atualizar_cadastro' %}">Atualizar</a>
+        <a href="{% url 'deletar' %}">Excluir</a>
+        <a href="{% url 'logout' %}">Deslogar</a>
+    </div>
+
+    <form method="post" action="{% url 'atualizar_cadastro' %}">
+        {% csrf_token %}
+        <label>Digite SEU e-mail de usuário:</label>
+        <input type="text" name="email" placeholder="Email autenticado" required>
+        <button type="submit">Solicitar atualização</button>
+        {% if email_error %}
+            <span class="error-message" style="font-weight: bolder; color: #fff;">
+            <svg style="margin-top: 20px;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+                    <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                  </svg>&nbsp;{{ email_error }}
+            </span>
+        {% endif %}
+    </form>
+
+
+    <script src="{% static 'js/script.js' %}?v={% now 'U' %}"></script>
+</body>
+</html>

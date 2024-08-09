@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="{% url 'index' %}">Início</a></li>
+    
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'gerenciar' %}">Gerenciar</a></li>
+                <li><span class="spanSide" onclick="openNav()">Ações</span></li>
+            {% else %}
+                <li><a class="active" href="{% url 'login' %}">Logar</a></li>
+                <li><a href="{% url 'cadastro' %}">Cadastrar</a></li>
+            {% endif %}
+    
+            <li style="float:right"><a class="active" href="#about">Login e Senha</a></li>
+        </ul>
+    </nav>
+
+    <form method="post">
+        {% csrf_token %}
+        <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-unlock-fill" viewBox="0 0 16 16">
+                <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2"/>
+            </svg>&nbsp;Logue aqui
+        </h3>
+
+        <label for="email">Email:</label>
+        <input type="text" placeholder="Email" id="email" name="email" required>
+        <label for="password">Senha:</label>
+        <input type="password" placeholder="Senha" id="password" name="password" required>
+        {% if senha_error %}
+        <span class="error-message" style="font-weight: bolder; color: #fff;"><svg style="margin-top: 20px;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+            <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+          </svg>&nbsp;{{ senha_error }}</span>
+        {% endif %}
+        <button type="submit">Logar</button>
+
+    </form>
+</body>
+</html>

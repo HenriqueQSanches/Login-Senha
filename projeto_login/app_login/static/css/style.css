@@ -1,0 +1,378 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #474e5d;
+  }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(40, 42, 53);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  li {
+    float: left;
+    border-right: 1px solid rgb(57, 60, 77);
+  }
+
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.4s ease-out;
+    z-index: 2;
+  }
+  
+  li a:hover {
+    background-color: #000000;
+  }
+
+  .active {
+    background-color: #04AA6D;
+  }
+
+  .active:hover {
+    background-color: #04AA6D;
+  }
+
+  /* CARD DE EXPLICAÇÃO ABAIXO */ 
+  
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding-top: 40px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin-top: 10px;
+  }
+  
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #c5c5c5;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+  
+  .container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+  
+  .container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #FF9F55;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .left {
+    left: 0;
+  }
+  
+  .right {
+    left: 50%;
+  }
+  
+  .left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+  
+  .right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+  
+  .right::after {
+    left: -16px;
+  }
+  
+  .content {
+    padding: 20px 30px;
+    background-color: #c5c5c5;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.473);
+    border-radius: 6px;
+  }
+
+  /* MEDIA SCREEN DO SITE */
+
+  @media screen and (max-width: 600px) {
+    .timeline::after {
+      left: 31px;
+    }
+  
+    .container {
+      width: 100%;
+      padding-left: 70px;
+      padding-right: 25px;
+    }
+  
+    .container::before {
+      left: 60px;
+      border: medium solid white;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+    }
+  
+    .left::after, .right::after {
+      left: 15px;
+    }
+  
+    .right {
+      left: 0%;
+    }
+
+    form {
+      width: 90%; 
+      height: auto; 
+      padding: 20px; 
+      box-shadow: none; 
+      border-radius: 5px; 
+  }
+
+  form h3 {
+      font-size: 24px; 
+      line-height: 32px; 
+  }
+
+  label {
+      font-size: 14px; 
+  }
+
+  input {
+      height: 40px; 
+      font-size: 12px; 
+  }
+
+  button {
+      margin-top: 30px; 
+      padding: 12px 0; 
+      font-size: 16px;
+  }
+
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+
+  }
+
+
+  /* FORMULÁRIO LOGIN */
+
+  form {
+    height: 400px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+    z-index: 1;
+}
+
+form * {
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+form h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+::placeholder {
+    color: #e5e5e5;
+}
+
+button {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out, color 0.3s ease-out; 
+}
+
+button:hover {
+  background-color: rgba(40, 42, 53, 1);
+  color: #ffffff; 
+}
+
+/* Estilos para Menu Lateral */
+
+.spanSide {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.4s ease-out;
+}
+
+.spanSide:hover {
+  background-color: #000000;
+}
+
+.sidenav {
+  height: 100%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #111; 
+  overflow-x: hidden; 
+  padding-top: 60px; 
+  transition: 0.5s; 
+  z-index: 3;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  z-index: 3;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  z-index: 3;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+.cadastreForm {
+    height: 500px;
+    width: 500px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+    z-index: 1;
+}
+
+/* Informações do Usuário no Gerenciar */
+
+.user-info {
+  margin-top: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+
+.danger {
+  margin-left: 20px;
+  background-color: rgba(255, 255, 255, 0.452);
+  border-left: 6px solid #f44336;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-top: 100px;
+}
+
+.danger p {
+  margin-left: 5px;
+}

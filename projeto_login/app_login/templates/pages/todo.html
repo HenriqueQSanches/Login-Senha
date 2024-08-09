@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar</title>
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="{% url 'index' %}">Início</a></li>
+    
+            {% if user.is_authenticated %}
+                <li><a class="active" href="{% url 'gerenciar' %}">Gerenciar</a></li>
+                <li><span class="spanSide" onclick="openNav()">Ações</span></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Logar</a></li>
+                <li><a href="{% url 'cadastro' %}">Cadastrar</a></li>
+            {% endif %}
+    
+            <li style="float:right"><a class="active" href="#about">Login e Senha</a></li>
+        </ul>
+    </nav>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'atualizar_cadastro' %}">Atualizar</a>
+        <a href="{% url 'deletar' %}">Excluir</a>
+        <a href="{% url 'logout' %}">Deslogar</a>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="danger">
+        <p><strong>Você está logado!</strong> Veja alguns dados da sua autentificação:</p>
+        <p><strong>Usuário: "</strong>{{ user_first_name }}", seja bem vindo!</p>
+        <p><strong>Autenticado com o e-mail: </strong>"{{ user }}" </p>
+        <p>E sua senha está criptografada por um hash Python.</p>
+        <p>Você é livre para atualizar seu e-mail e sua senha pelo menu de ações.</p>
+        <strong style="color: white; font-size: 25px; margin-left: 20px;">Ou deletar seu usuário...&nbsp;<svg style="margin-top: 5px;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-emoji-frown-fill" viewBox="0 0 16 16">
+  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m-2.715 5.933a.5.5 0 0 1-.183-.683A4.5 4.5 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.5 3.5 0 0 0 8 10.5a3.5 3.5 0 0 0-3.032 1.75.5.5 0 0 1-.683.183M10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8"/>
+</svg></strong>
+    </div>
+    {% endif %}
+
+      <script src="{% static 'js/script.js' %}?v={% now 'U' %}"></script>
+</body>
+</html>

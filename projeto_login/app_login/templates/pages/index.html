@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Login e Senha</title>
+</head>
+<body>
+  <nav class="menu">
+    <ul>
+        <li><a class="active" href="{% url 'index' %}">Início</a></li>
+
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'gerenciar' %}">Gerenciar</a></li>
+            <li><span class="spanSide" onclick="openNav()">Ações</span></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Logar</a></li>
+            <li><a href="{% url 'cadastro' %}">Cadastrar</a></li>
+        {% endif %}
+
+        <li style="float:right"><a class="active" href="#about">Login e Senha</a></li>
+    </ul>
+</nav>
+
+    <div class="timeline">
+        <div class="container left">
+          <div class="content">
+            <h2>Projeto de Login e Senha</h2>
+            <p>Usando HTML, CSS, Javascript, Django e SQLite</p>
+          </div>
+        </div>
+        <div class="container right">
+          <div class="content">
+            <h2>Funcionalidades</h2>
+            <p>Criei um Projeto de Login e Senha com cadastro de usuários e com validação também</p>
+            <p>Você pode Logar, atualizar seu Login e depois de logado, pode até apagar sua conta</p>
+            <p>Para o uso de senhas, usei um hashcode aplicado no próprio Django para que não exista o acesso as senhas reais.</p>
+          </div>
+        </div>
+      </div>
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'atualizar_cadastro' %}">Atualizar</a>
+        <a href="#">Excluir</a>
+        <a href="{% url 'logout' %}">Deslogar</a>
+    </div>
+
+    <script src="{% static 'js/script.js' %}?v={% now 'U' %}"></script>
+</body>
+</html>
